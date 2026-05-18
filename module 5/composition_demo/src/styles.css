@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #101522;
+  color: white;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background: #1b2235;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+}
+
+.sidebar p {
+  margin: 16px 0;
+  cursor: pointer;
+}
+
+.content {
+  flex: 1;
+  padding: 24px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #1f2a40;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.button {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.setup {
+  background: #f76402;
+  color: white;
+}
+
+.start {
+  background: #019630;
+  color: white;
+}
