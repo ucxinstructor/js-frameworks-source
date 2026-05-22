@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>2.4</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function Card({ title, children }) {
+      return (
+        <div>
+          <h2>{title}</h2>
+          {children}
+        </div>
+      );
+    }
+
+    function Header() {
+      return <h1>Composition Demo</h1>;
+    }
+
+    function Footer() {
+      return <small>Copyright 2026</small>;
+    }
+
+    function App() {
+      return (
+        <>
+          <Header />
+          <Card title="Student 1">
+            <p>JJ is studying React.</p>
+          </Card>
+
+          <Card title="Student 2">
+            <p>Sam is studying JavaScript.</p>
+          </Card>
+          
+          <Card title="Student 3">
+            <p>Frank is studying CSS.</p>
+          </Card>
+
+          <Footer />
+        </>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>

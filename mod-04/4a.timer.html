@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Demo 4.4a: Timer</title>
+</head>
+
+<body>
+
+  <div id="root"></div>
+  <p>Timer with Restart Effect (not working properly)</p>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function Timer() {
+      const [seconds, setSeconds] = React.useState(0);
+      const [tick, setTick] = React.useState(0);
+
+      React.useEffect(() => {
+        const id = setInterval(() => {
+          setSeconds(s => s + 1);
+        }, 1000);
+      }, [tick]); // intentionally changing dependency
+
+      return (
+        <div>
+          <h1>{seconds}</h1>
+          <button onClick={() => setTick(t => t + 1)}>
+            Restart Effect
+          </button>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Timer />);
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Demo 3.2</title>
+</head>
+
+<body>
+  <h1>Controlled Components</h1>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+
+    function NameInput() {
+      const [name, setName] = React.useState("");
+
+      return (
+        <>
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <p>Hello, {name}</p>
+        </>);
+    }
+
+    function App() {
+      return (
+        <div className="container">
+          <NameInput />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+
+</body>
+
+</html>

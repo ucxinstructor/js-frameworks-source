@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Demo 4.2</title>
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <p>useEffect Dependencies</p>
+  <ul>
+    <li>Counter1 includes count in its dependency array, so the effect re-runs whenever count changes and keeps message
+      in sync with the current value.</li>
+    <li>Counter2 uses an empty dependency array and therefore runs only once on mount, never updating message again.
+    </li>
+    <li>Counter3 omits a dependency array and thus runs after every render, even when count has not changed, making it
+      work but less efficient.</li>
+  </ul>
+
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function Counter1() {
+      const [count, setCount] = React.useState(0);
+      const [message, setMessage] = React.useState("");
+
+      React.useEffect(() => {
+        if (count % 2 === 0) {
+          setMessage("Even number");
+        } else {
+          setMessage("Odd number");
+        }
+      }, [count]);
+
+      return (
+        <div>
+          <h1>{count}</h1>
+          <p>{message}</p>
+          <p>has count dependency</p>
+          <button onClick={() => setCount(c => c + 1)}>
+            Increment
+          </button>
+        </div>
+      );
+    }
+
+    function Counter2() {
+      const [count, setCount] = React.useState(0);
+      const [message, setMessage] = React.useState("");
+
+      React.useEffect(() => {
+        if (count % 2 === 0) {
+          setMessage("Even number");
+        } else {
+          setMessage("Odd number");
+        }
+      }, []); // missing dependency
+
+      return (
+        <div>
+          <h1>{count}</h1>
+          <p>{message}</p>
+          <p>missing dependency</p>
+          <button onClick={() => setCount(c => c + 1)}>
+            Increment
+          </button>
+        </div>
+      );
+    }
+
+    function Counter3() {
+      const [count, setCount] = React.useState(0);
+      const [message, setMessage] = React.useState("");
+
+      React.useEffect(() => {
+        if (count % 2 === 0) {
+          setMessage("Even number");
+        } else {
+          setMessage("Odd number");
+        }
+      }); // missing dependency
+
+      return (
+        <div>
+          <h1>{count}</h1>
+          <p>{message}</p>
+          <p>missing dependency</p>
+          <button onClick={() => setCount(c => c + 1)}>
+            Increment
+          </button>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<><Counter1 /><Counter2 /><Counter3 /></>);
+  </script>
+
+</body>
+
+</html>

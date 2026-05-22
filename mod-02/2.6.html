@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>2.6</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function App() {
+      const students = [
+        { id: 1, name: "Ava", major: "CS" },
+        { id: 2, name: "Noah", major: "Math" },
+        { id: 3, name: "Mia", major: "Design" },
+        { id: 4, name: "Liam", major: "CS" },
+        { id: 5, name: "Emma", major: "Biology" },
+        { id: 6, name: "Olivia", major: "Math" },
+        { id: 7, name: "Ethan", major: "History" },
+        { id: 8, name: "Sophia", major: "CS" }
+      ];
+
+      const csStudents = students.filter((student) => student.major === "CS");
+
+      return (
+        <>
+          <h1>Dynamic Rendering, Lists, Keys, and Filter</h1>
+
+          <h2>All Students</h2>
+          <ul>
+            {students.map((student) => (
+              <li key={student.id}>
+                {student.name} - {student.major}
+              </li>
+            ))}
+          </ul>
+
+          <h2>CS Students Only</h2>
+          <ul>
+            {csStudents.map((student) => (
+              <li key={student.id}>
+                {student.name} - {student.major}
+              </li>
+            ))}
+          </ul>
+        </>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>

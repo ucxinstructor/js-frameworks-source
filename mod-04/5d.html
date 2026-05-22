@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo 4.5d: Fetching Real Data with error handling</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      function Posts() {
+        const [posts, setPosts] = React.useState([]);
+        const [loading, setLoading] = React.useState(true);
+        const [error, setError] = React.useState(null);
+
+        React.useEffect(() => {
+          fetch("https://openlibrary.org/search/authors.json?q=martin")
+            .then((res) => {
+              if (!res.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return res.json();
+            })
+            .then((data) => {
+              // data resides in docs array, we will show only first 10 posts
+              setPosts(data.docs.slice(0, 10)); 
+              setLoading(false);
+            })
+            .catch((err) => {
+              setError(err.message);
+              setLoading(false);
+            });
+        }, []);
+
+        if (loading) return <p>Loading posts...</p>;
+        if (error) return <p>Error: {error}</p>;
+
+        return (
+          <div>
+            <h2>Latest Entries</h2>
+            <ul>
+              {posts.map((author) => (
+                <li key={author.key}>
+                  <strong>{author.name}</strong>
+                  <p>Subjects: {author.top_subjects?.join(", ")}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<Posts />);
+    </script>
+  </body>
+</html>

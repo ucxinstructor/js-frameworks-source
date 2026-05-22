@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Demo 3.1</title>
+</head>
+
+<body>
+  <h1>Counter App: Using useState</h1>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+
+    function Counter() {
+      const [count, setCount] = React.useState(1);
+
+      function increment() {
+        setCount(count + 1);
+      }
+
+      return (
+        <div className="counter">
+          <h1>{count}</h1>
+          <button onClick={increment}>Increment</button>
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div className="container">
+          <Counter />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+
+</body>
+
+</html>

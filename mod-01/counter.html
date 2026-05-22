@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Counter Demo</title>
+</head>
+<body>
+
+  <h1>Counter</h1>
+
+  <p id="count">0</p>
+
+  <button id="increaseBtn">Increase</button>
+  <button id="decreaseBtn">Decrease</button>
+
+  <script language="javascript">
+  <!--
+  // app.js
+
+let count = 0;
+
+const countElement = document.getElementById("count");
+
+const increaseBtn = document.getElementById("increaseBtn");
+const decreaseBtn = document.getElementById("decreaseBtn");
+
+increaseBtn.addEventListener("click", function () {
+  count++;
+  countElement.textContent = count;
+});
+
+decreaseBtn.addEventListener("click", function () {
+  count--;
+  countElement.textContent = count;
+});
+  -→
+  </script>
+</body>
+</html>

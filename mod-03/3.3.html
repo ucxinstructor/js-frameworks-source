@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Demo 3.3</title>
+</head>
+
+<body>
+  <h1>Form Demo</h1>
+
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+
+    function FormDemo() {
+      const [text, setText] = React.useState("");
+      const [bio, setBio] = React.useState("");
+      const [isChecked, setIsChecked] = React.useState(false);
+      const [country, setCountry] = React.useState("");
+      const [role, setRole] = React.useState("");
+
+      return (
+        <div>
+          {/* Text input */}
+          <div>
+            <label>Text:</label>
+            <input
+              type="text"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+          </div>
+
+          {/* Textarea */}
+          <div>
+            <label>Bio:</label>
+            <textarea
+              value={bio}
+              onChange={(e) => setBio(e.target.value)}
+            />
+          </div>
+
+          {/* Checkbox */}
+          <div>
+            <label>
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={(e) => setIsChecked(e.target.checked)}
+              />
+              Subscribe
+            </label>
+          </div>
+
+          {/* Select dropdown */}
+          <div>
+            <label>Country:</label>
+            <select
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+            >
+              <option value="">Select</option>
+              <option value="usa">USA</option>
+              <option value="canada">Canada</option>
+              <option value="uk">UK</option>
+            </select>
+          </div>
+
+          {/* Radio buttons */}
+          <div>
+            <label>
+              <input
+                type="radio"
+                value="student"
+                checked={role === "student"}
+                onChange={(e) => setRole(e.target.value)}
+              />
+              Student
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                value="faculty"
+                checked={role === "faculty"}
+                onChange={(e) => setRole(e.target.value)}
+              />
+              Faculty
+            </label>
+          </div>
+
+          {/* Display state */}
+          <hr />
+          <div>
+            <p>Text: {text}</p>
+            <p>Bio: {bio}</p>
+            <p>Subscribed: {isChecked ? "Yes" : "No"}</p>
+            <p>Country: {country}</p>
+            <p>Role: {role}</p>
+          </div>
+        </div>
+      );
+    }
+
+
+    function App() {
+      return (
+        <div className="container">
+          <FormDemo />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+
+</body>
+
+</html>

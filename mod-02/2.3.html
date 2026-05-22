@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mod 2.3</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function Greeting({ name = "", course }) {
+      if (name === "") {
+        return <p>Hello. Welcome to {course}.</p>;
+      } else {
+        return <p>Hello, {name}. Welcome to {course}.</p>;
+      }
+    }
+
+    function PropGreeting(props) {
+      return <p>Hello, {props.name}. Welcome to {props.course}.</p>;
+    }
+
+    function App() {
+      return (
+        <>
+          <h1>Props</h1>
+          <PropGreeting name="Mia" course="Frontend Development" />
+          <h1>Destructuring</h1>
+          <Greeting name="Ava" course="JavaScript Frameworks" />
+          <Greeting name="Noah" course="React Basics" />
+          <h1>Default Value</h1>
+          <Greeting course="JavaScript Frameworks" />
+        </>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Demo 4.1</title>
+</head>
+
+<body>
+
+  <div id="root"></div>
+  <p>Side Effects Demo</p>
+  <ul>
+    <li>One effect runs after every render</li>
+    <li>Another effect runs after count changes</li>
+  </ul>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function Counter() {
+      const [count, setCount] = React.useState(1);
+
+      React.useEffect(() => {
+        console.log("counter rendered");
+      });
+
+      React.useEffect(() => {
+        document.title = `Count: ${count}`;
+      }, [count]);
+
+      function increment() {
+        setCount(count + 1);
+      }
+
+      return (
+        <div className="counter">
+          <h1>{count}</h1>
+          <button onClick={increment}>Increment</button>
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div className="container">
+          <Counter />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+
+</body>
+
+</html>

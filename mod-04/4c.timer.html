@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Demo 4.4c: Timer</title>
+</head>
+
+<body>
+
+  <div id="root"></div>
+  <p>BasicTimer (Clean) - clear interval</p>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function Timer() {
+      const [seconds, setSeconds] = React.useState(0);
+
+      React.useEffect(() => {
+        const id = setInterval(() => {
+          setSeconds(s => s + 1);
+        }, 1000);
+
+        return () => clearInterval(id); // cleanup
+      }, []);
+
+      return <h1>{seconds} seconds</h1>;
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Timer />);
+  </script>
+
+
+</body>
+
+</html>

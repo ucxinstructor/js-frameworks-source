@@ -1,0 +1,20 @@
+import { render, screen } from "@testing-library/react";
+import TodoList from "./TodoList";
+
+test("shows empty state when no todos", () => {
+  render(<TodoList todos={[]} onDelete={() => {}} onToggle={() => {}} />);
+
+  expect(screen.getByText("No todos yet")).toBeInTheDocument();
+});
+
+test("renders list of todos", () => {
+  const todos = [
+    { id: 1, text: "A", completed: false },
+    { id: 2, text: "B", completed: false },
+  ];
+
+  render(<TodoList todos={todos} onDelete={() => {}} onToggle={() => {}} />);
+
+  expect(screen.getByText("A")).toBeInTheDocument();
+  expect(screen.getByText("B")).toBeInTheDocument();
+});
