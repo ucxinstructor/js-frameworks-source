@@ -37,16 +37,6 @@ module-03/
 ...
 ```
 
-Each module may contain:
-
-```text id="jlwmp4"
-demos/
-labs/
-starter-code/
-solutions/
-slides/
-```
-
 ## Running a Project
 
 Most projects use Vite.
@@ -96,6 +86,3 @@ Many projects are designed to be deployed using:
 
 * [Vercel](https://vercel.com?utm_source=chatgpt.com)
 
-## License
-
-Educational use.
