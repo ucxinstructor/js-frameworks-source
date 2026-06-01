@@ -3,8 +3,6 @@ import './App.css'
 import { useState, useRef, useEffect } from 'react';
 import Button from '@mui/material/Button';
 
-import { getCurrentWindow } from '@tauri-apps/api/window';
-
 // 2. Internal Project Components
 import CircularProgressWithLabel from './components/CircularProgressWithLabel.jsx';
 import HelpDrawer from './components/HelpDrawer.jsx';
@@ -20,6 +18,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import AlarmSound from './assets/alarm.mp3';
 
 export default function App() {
+  // We store the appWindow in state so it's only populated if we are in Tauri
+  const [appWindow, setAppWindow] = useState(null);
+
   const defaultSeconds = 5 * 60; // Default to 5 minutes
   const [remainSeconds, setRemainSeconds] = useState(defaultSeconds);
   const [maxSeconds, setMaxSeconds] = useState(defaultSeconds);
@@ -160,12 +161,27 @@ export default function App() {
     return () => clearInterval(interval);
   }, [isRunning, remainSeconds]); // Only re-run the effect if the user starts/stops the timer
 
-  const appWindow = getCurrentWindow();
+  useEffect(() => {
+    // Only try to load Tauri if we are actually running inside the desktop app
+    if (window.__TAURI_INTERNALS__) {
+      import('@tauri-apps/api/window').then((module) => {
+        setAppWindow(module.getCurrentWindow());
+      });
+    }
+  }, []);
+
+  const handleClose = () => {
+    if (appWindow) {
+      appWindow.close();
+    } else {
+      console.log("Web mode: Close ignored.");
+    }
+  };
 
   return (
     <div className="app-container" data-tauri-drag-region>
       <Button
-        onClick={() => appWindow.close()}
+        onClick={handleClose}
         style={{
           position: 'absolute', top: 10, right: 10,
           cursor: 'pointer', zIndex: 9999,
