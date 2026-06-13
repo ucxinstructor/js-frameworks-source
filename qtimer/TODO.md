@@ -7,7 +7,7 @@ FUTURE
 
 * Layout/Size variety
 * Preset Menu popup
-* Make gadget friendly for macos?
+* Make gadget friendly for MacOS?
 
 DONE
 

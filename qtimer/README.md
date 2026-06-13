@@ -1,6 +1,6 @@
 # QuickTimer
 
-A high-performance, minimalist desktop timer built with **React**, **MUI**, and **Tauri v2**. Designed to feel like a futuristic "Widget," QuickTimer stays out of your way while keeping you on track with "Always on Top" functionality and a sleek, frameless interface.
+A high-performance, minimalist desktop timer built with **React**, **MUI**, and **Tauri v2**. Designed to feel like a futuristic "Widget," QuickTimer stays out of your way while keeping you on track with a sleek, frameless interface.
 
 ## 🎓 Academic Context
 
@@ -71,7 +71,7 @@ Run the web version in your browser:
 npm run dev
 ```
 
-Run the desktop version (Tauri):
+Run the desktop version (Tauri) (automatically runs the server):
 ```bash
 npx tauri dev
 ```

@@ -43,14 +43,14 @@ export default function HelpDrawer() {
       <Drawer anchor="right" open={isOpen} onClose={() => setIsOpen(false)}>
         <Box sx={{ width: 320, p: 3, role: 'presentation' }}>
           <Typography variant="h5" gutterBottom fontWeight="bold">
-            App Help & Shortcuts
+            Quick Timer v1.0: Help & Shortcuts
           </Typography>
           <Divider sx={{ my: 2 }} />
           
           <Typography variant="subtitle1" fontWeight="bold">Keyboard Shortcuts:</Typography>
           <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-            • <strong>Space:</strong> Play / Pause<br/>
-            • <strong>Escape:</strong> Reset Timer<br/>
+            • <strong>s:</strong> Start / Pause<br/>
+            • <strong>r:</strong> Reset Timer<br/>
             • <strong>m:</strong> Toggle Messages<br/>
             • <strong>1:</strong> Set to 5 minutes<br/>
             • <strong>2:</strong> Set to 10 minutes<br/>

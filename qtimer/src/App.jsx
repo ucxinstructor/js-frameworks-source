@@ -68,10 +68,10 @@ export default function App() {
       return nextValue;
     });
   });
-  useShortcut(' ', () => {
+  useShortcut('s', () => {
     handleStartToggle();
   });
-  useShortcut('Escape', () => {
+  useShortcut('r', () => {
     setRemainSeconds(maxSeconds);
     setIsRunning(false);
   });
