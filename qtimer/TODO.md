@@ -5,8 +5,7 @@ TODO
 
 FUTURE
 
-* Layout/Size variety
-* Preset Menu popup
+* Layout/Size variety (size toogles up to full screen?)
 * Make gadget friendly for MacOS?
 
 DONE
